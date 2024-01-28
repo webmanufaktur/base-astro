@@ -1,5 +1,6 @@
 ---
-
+import { SEO } from 'astro-seo'
+import { Schema } from 'astro-seo-schema'
 ---
 
 <html lang="en">
@@ -8,9 +9,55 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <title>Base Astro</title>
+    <!-- Astro SEO -->
+    <SEO
+      title="Base Astro - Sane Base Astro Template"
+      description="A Sane Base Starter for Astro JS."
+      openGraph={{
+        basic: {
+          title: 'Base Astro - Sane Base Astro Template',
+          type: 'article',
+          image:
+            'https://user-images.githubusercontent.com/5182256/131216951-8f74f425-f775-463d-a11b-0e01ad9fce8d.png',
+        },
+      }}
+      twitter={{
+        creator: '@astrodotbuild',
+      }}
+      extend={{
+        // extending the default link tags
+        link: [{ rel: 'icon', href: '/favicon.ico' }],
+        // extending the default meta tags
+        meta: [
+          {
+            name: 'twitter:image',
+            content:
+              'https://user-images.githubusercontent.com/5182256/131216951-8f74f425-f775-463d-a11b-0e01ad9fce8d.png',
+          },
+          { name: 'twitter:title', content: 'Base Astro - Sane Base Astro Template' },
+          { name: 'twitter:description', content: 'A Sane Base Starter for Astro JS.' },
+        ],
+      }}
+    />
+    <!-- Schema -->
+    <Schema
+      item={{
+        '@context': 'https://schema.org',
+        '@type': 'Person',
+        name: 'Grace Brewster',
+        alternateName: 'Grace Brewster Murray Hopper',
+        alumniOf: {
+          '@type': 'CollegeOrUniversity',
+          name: ['Yale University', 'Vassar College'],
+        },
+        knowsAbout: ['Compilers', 'Computer Science'],
+      }}
+    />
   </head>
-  <body>
-    <h1>Base Astro</h1>
+  <body class="flex min-h-svh items-center justify-center">
+    <div>
+      <h1 class="text-3xl">Base Astro</h1>
+      <hr />
+    </div>
   </body>
 </html>
